@@ -1,0 +1,39 @@
+// ==UserScript==
+// @name        OTP Solution
+// @namespace   RakebislaM
+// @description don't share without my permission
+// @include     http://indianvisa-bangladesh.nic.in/visa/
+// @include     http://indianvisa-bangladesh.nic.in/visa/Get_Appointment
+// @include     http://indianvisa-bangladesh.nic.in/visa/Appointment_Login.jsp
+// @include     http://indianvisa-bangladesh.nic.in/visa/allotment
+// @require     http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js
+// ==/UserScript==
+
+var badDivs = $("#ratingTable div.entry").has ("div.notHot");
+
+badDivs.remove ();
+
+
+
+if (otp_required_check)
+            {
+                correctify($('#have_otp'), "");
+                if (document.getElementById('have_otp').checked == true && otp_value.length == 0) {
+                    errorify($('#otp'), "Please enter otp");
+                    submit = false;
+                    //  alert("Have OTP and Length= 0. Submit = " + submit);
+                }
+                else
+                {
+                    correctify($('#otp'), "");
+                }
+                if (document.getElementById('have_otp').checked == true && otp_value.length < 6) {
+                    errorify($('#otp'), "Please enter correct otp");
+                    submit = false;
+                    // alert("Have OTP and Length< 6. Submit = " + submit);
+                }
+                else 
+                {
+                    correctify($('#otp'), "");
+                }          
+
